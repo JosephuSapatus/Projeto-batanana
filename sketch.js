@@ -42,7 +42,7 @@ function setup() {
   trex.addAnimation("collided", trex_collided);
   trex.scale = 0.5;
   
-  ground = createSprite(width /2,height -10,width -2,2);
+  ground = createSprite(width /2,height -10,width ,2);
   ground.addImage("ground",groundImage);
   ground.x = ground.width /2;
   ground.velocityX = -(6 + 3*score/100);
@@ -77,7 +77,7 @@ function draw() {
     score = score + Math.round(getFrameRate()/60);
     ground.velocityX = -(6 + 3*score/100);
   
-    if (touches.length > 0 && keyDown("space") && trex.y >= height -120) {
+    if (touches.length > 0 || keyDown("space") && trex.y >= height -120) {
       trex.velocityY = -12;
       touches = []
     }
